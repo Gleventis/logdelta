@@ -1,5 +1,7 @@
 # Logdelta
 
+[![CI](https://github.com/Gleventis/logdelta/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Gleventis/logdelta/actions/workflows/ci.yml)
+
 Logdelta is a Python CLI tool for analyzing application logs.
 
 It uses [Drain3](https://github.com/logpai/Drain3) to identify recurring log
