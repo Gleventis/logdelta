@@ -24,7 +24,7 @@ patterns and provides two commands:
 Clone the repository and install the dependencies:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Gleventis/logdelta.git
 cd logdelta
 uv sync
 ```
