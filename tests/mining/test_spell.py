@@ -18,12 +18,14 @@ def test_spell_with_different_sequence_lengths() -> None:
 
     assert result == ["Connection", "from", "<*>", "failed"]
 
+
 def test_spell_with_between_tokens() -> None:
     input1 = ["A", "B"]
     input2 = ["A", "C", "B"]
     result = generate_template(input1, input2)
 
     assert result == ["A", "<*>", "B"]
+
 
 def test_spell_with_multiple_different_tokens() -> None:
     input1 = ["User", "42", "logged", "in", "from", "10.0.0.1"]
@@ -32,12 +34,14 @@ def test_spell_with_multiple_different_tokens() -> None:
 
     assert result == ["User", "<*>", "logged", "in", "from", "<*>"]
 
+
 def test_spell_with_same_sequences() -> None:
     input1 = ["User", "deleted"]
     input2 = ["User", "deleted"]
     result = generate_template(input1, input2)
 
     assert result == ["User", "deleted"]
+
 
 def test_spell_preservers_existing_wildcard() -> None:
     input1 = ["User", "<*>", "logged", "in"]
@@ -46,6 +50,7 @@ def test_spell_preservers_existing_wildcard() -> None:
 
     assert result == ["User", "<*>", "logged", "in"]
 
+
 def test_spell_with_no_common_sequences() -> None:
     input1 = ["User", "deleted"]
     input2 = ["Application", "started"]
@@ -53,9 +58,10 @@ def test_spell_with_no_common_sequences() -> None:
 
     assert result == ["<*>"]
 
+
 def test_spell_with_empty_sequences() -> None:
-    input1 = []
-    input2 = []
+    input1: list[str] = []
+    input2: list[str] = []
     result = generate_template(input1, input2)
 
     assert result == []

@@ -21,7 +21,7 @@ def generate_template(
 
     i, j = 0, 0
 
-    result = []
+    result: list[str] = []
 
     for token in common_tokens:
         next_i = template_tokens.index(token, i)
