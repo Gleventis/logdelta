@@ -1,4 +1,10 @@
 from dataclasses import dataclass
+from enum import StrEnum
+
+
+class MiningAlgorithm(StrEnum):
+    DRAIN3 = "drain3"
+    SPELL = "spell"
 
 
 @dataclass(frozen=True, slots=True)
