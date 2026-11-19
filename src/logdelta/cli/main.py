@@ -9,7 +9,8 @@ from rich.console import Console
 from logdelta.cli.formatting import build_comp_table, build_sum_table
 from logdelta.comparison.comparator import compare_templates
 from logdelta.controller.controller import Controller
-from logdelta.mining.miner import LogTemplate, Miner
+from logdelta.mining.miner import Miner
+from logdelta.mining.models import LogTemplate
 from logdelta.parsing.models import Log
 from logdelta.reading.reader import read_logs
 

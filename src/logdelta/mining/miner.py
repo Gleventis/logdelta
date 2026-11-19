@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from drain3 import TemplateMiner
 from drain3.template_miner_config import TemplateMinerConfig
 
+from logdelta.mining.models import LogTemplate, MiningResult
 from logdelta.parsing.models import Log
 
 
@@ -22,26 +23,6 @@ class MinerConfig:
     depth: int = 4
     similarity_threshold: float = 0.4
     max_children: int = 100
-
-
-@dataclass(frozen=True, slots=True)
-class MiningResult:
-    """dataclass for the result of mining"""
-
-    template: str
-    cluster_id: int
-    cluster_size: int
-    cluster_count: int
-    change_type: str
-
-
-@dataclass(frozen=True, slots=True)
-class LogTemplate:
-    """dataclass for the log templates"""
-
-    cluster_id: int
-    template: str
-    size: int
 
 
 class Miner:

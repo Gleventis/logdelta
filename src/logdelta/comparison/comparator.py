@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from logdelta.mining.miner import LogTemplate
+from logdelta.mining.models import LogTemplate
 
 
 @dataclass(frozen=True, slots=True)

@@ -2,7 +2,7 @@ from rich.table import Table
 from rich.text import Text
 
 from logdelta.comparison.comparator import TemplateComparison
-from logdelta.mining.miner import LogTemplate
+from logdelta.mining.models import LogTemplate
 
 
 def build_sum_table(templates: list[LogTemplate]) -> Table:

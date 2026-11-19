@@ -2,7 +2,8 @@
 
 from collections.abc import Iterable
 
-from logdelta.mining.miner import LogTemplate, Miner
+from logdelta.mining.miner import Miner
+from logdelta.mining.models import LogTemplate
 from logdelta.parsing.models import Log
 
 
