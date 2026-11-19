@@ -1,6 +1,7 @@
 import datetime
-from logdelta.parsing.models import Log
+
 from logdelta.mining.spell import Spell
+from logdelta.parsing.models import Log
 
 
 def test_spell_creates_cluster_from_first_log() -> None:

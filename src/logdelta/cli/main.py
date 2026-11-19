@@ -9,8 +9,8 @@ from rich.console import Console
 from logdelta.cli.formatting import build_comp_table, build_sum_table
 from logdelta.comparison.comparator import compare_templates
 from logdelta.controller.controller import Controller
-from logdelta.mining.miner import Miner
-from logdelta.mining.models import LogTemplate
+from logdelta.mining.factory import create_miner
+from logdelta.mining.models import LogTemplate, MiningAlgorithm
 from logdelta.parsing.models import Log
 from logdelta.reading.reader import read_logs
 
@@ -28,12 +28,16 @@ def summary(
         list[Path],
         typer.Argument(exists=True, file_okay=True, dir_okay=False, readable=True),
     ],
+    algorithm: Annotated[
+        MiningAlgorithm,
+        typer.Option("--algorithm", help="Mining algorithm to use"),
+    ] = MiningAlgorithm.DRAIN3,
 ) -> None:
     total_logs: list[Log] = []
     for file in log_files:
         total_logs.extend(read_logs(file))
 
-    miner = Miner()
+    miner = create_miner(algorithm=algorithm)
 
     controller = Controller(miner)
 
@@ -58,12 +62,16 @@ def compare(
     compare_with: Annotated[
         Path, typer.Argument(exists=True, file_okay=True, dir_okay=False, readable=True)
     ],
+    algorithm: Annotated[
+        MiningAlgorithm,
+        typer.Option("--algorithm", help="Mining algorithm to use"),
+    ] = MiningAlgorithm.DRAIN3,
 ) -> None:
 
     logs_before = read_logs(log_file)
     logs_after = read_logs(compare_with)
 
-    miner_before, miner_after = Miner(), Miner()
+    miner_before, miner_after = create_miner(algorithm), create_miner(algorithm)
 
     controller_before, controller_after = (
         Controller(miner_before),
